@@ -14,6 +14,7 @@ class Service extends Model
         'name',
         'slug',
         'description',
+        'image_url',
         'price_start',
         'price_end',
         'duration_hours',
@@ -27,8 +28,8 @@ class Service extends Model
         'features' => 'array',
         'is_popular' => 'boolean',
         'is_active' => 'boolean',
-        'price_start' => 'decimal:0',
-        'price_end' => 'decimal:0'
+        'price_start' => 'decimal:2',
+        'price_end' => 'decimal:2'
     ];
 
     public function bookings(): HasMany
@@ -36,16 +37,26 @@ class Service extends Model
         return $this->hasMany(Booking::class);
     }
 
-    public function getFormattedPriceAttribute(): string
-    {
-        if ($this->price_end) {
-            return 'Rp ' . number_format($this->price_start, 0, ',', '.') . ' - Rp ' . number_format($this->price_end, 0, ',', '.');
-        }
-        return 'Mulai dari Rp ' . number_format($this->price_start, 0, ',', '.');
-    }
-
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function getFormattedPriceAttribute(): string
+    {
+        if ($this->price_end && $this->price_end > $this->price_start) {
+            return 'Rp ' . number_format($this->price_start, 0, ',', '.') . ' - Rp ' . number_format($this->price_end, 0, ',', '.');
+        }
+
+        return 'Rp ' . number_format($this->price_start, 0, ',', '.');
+    }
+
+    public function getImageUrlAttribute($value): string
+    {
+        if ($value && !str_starts_with($value, 'http')) {
+            return asset('storage/' . $value);
+        }
+
+        return $value ?: asset('images/placeholder-service.jpg');
     }
 }

@@ -19,6 +19,7 @@
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total Bookings -->
             <div class="bg-white overflow-hidden shadow rounded-lg">
                 <div class="p-5">
                     <div class="flex items-center">
@@ -37,6 +38,7 @@
                 </div>
             </div>
 
+            <!-- Pending Bookings -->
             <div class="bg-white overflow-hidden shadow rounded-lg">
                 <div class="p-5">
                     <div class="flex items-center">
@@ -55,6 +57,7 @@
                 </div>
             </div>
 
+            <!-- Total Portfolios -->
             <div class="bg-white overflow-hidden shadow rounded-lg">
                 <div class="p-5">
                     <div class="flex items-center">
@@ -73,6 +76,7 @@
                 </div>
             </div>
 
+            <!-- Total Clients -->
             <div class="bg-white overflow-hidden shadow rounded-lg">
                 <div class="p-5">
                     <div class="flex items-center">
@@ -85,6 +89,66 @@
                             <dl>
                                 <dt class="text-sm font-medium text-gray-500 truncate">Total Clients</dt>
                                 <dd class="text-lg font-medium text-gray-900">{{ $stats['total_clients'] }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Stats Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Total Services -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Total Services</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ $stats['total_services'] }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Services -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Active Services</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ $stats['active_services'] }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unread Messages -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Unread Messages</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ $unreadMessages }}</dd>
                             </dl>
                         </div>
                     </div>
@@ -114,15 +178,20 @@
                                         </div>
                                         <div class="ml-4">
                                             <div class="text-sm font-medium text-gray-900">{{ $booking->client_name }}</div>
-                                            <div class="text-sm text-gray-500">{{ $booking->service->name }}</div>
+                                            <div class="text-sm text-gray-500">{{ $booking->service->name ?? 'Service not found' }}</div>
                                         </div>
                                     </div>
                                     <div class="flex items-center">
-                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {{ $booking->status_badge }}">
-                                            {{ $booking->status_text }}
+                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+                                            @if($booking->status == 'pending') bg-yellow-100 text-yellow-800
+                                            @elseif($booking->status == 'confirmed') bg-green-100 text-green-800
+                                            @elseif($booking->status == 'completed') bg-blue-100 text-blue-800
+                                            @else bg-red-100 text-red-800
+                                            @endif">
+                                            {{ ucfirst($booking->status) }}
                                         </span>
                                         <div class="ml-4 text-sm text-gray-500">
-                                            {{ $booking->booking_date->format('M d, Y') }}
+                                            {{ $booking->booking_date ? $booking->booking_date->format('M d, Y') : 'No date' }}
                                         </div>
                                     </div>
                                 </div>

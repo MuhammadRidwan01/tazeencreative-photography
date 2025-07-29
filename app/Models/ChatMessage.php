@@ -11,21 +11,24 @@ class ChatMessage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'sender_id',
+        'receiver_id',
         'message',
-        'is_admin',
-        'file_path',
         'is_read'
     ];
 
     protected $casts = [
-        'is_admin' => 'boolean',
         'is_read' => 'boolean'
     ];
 
-    public function user(): BelongsTo
+    public function sender(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'sender_id');
+    }
+
+    public function receiver(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'receiver_id');
     }
 
     public function scopeUnread($query)
@@ -33,8 +36,12 @@ class ChatMessage extends Model
         return $query->where('is_read', false);
     }
 
-    public function scopeForUser($query, $userId)
+    public function scopeBetweenUsers($query, $user1, $user2)
     {
-        return $query->where('user_id', $userId);
+        return $query->where(function ($q) use ($user1, $user2) {
+            $q->where('sender_id', $user1)->where('receiver_id', $user2);
+        })->orWhere(function ($q) use ($user1, $user2) {
+            $q->where('sender_id', $user2)->where('receiver_id', $user1);
+        });
     }
 }

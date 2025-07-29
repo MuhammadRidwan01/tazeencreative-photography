@@ -148,7 +148,7 @@
                     <a href="{{ route('booking.create') }}" class="btn-primary">
                         Book Another Session
                     </a>
-                    <a href="{{ route('contact') }}" class="btn-outline">
+                    <a href="{{ route('contact.index') }}" class="btn-outline">
                         Contact Support
                     </a>
                     <a href="{{ route('portfolio.index') }}" class="btn-outline">

@@ -7,8 +7,8 @@
 <!-- Hero Section -->
 <section class="relative h-64 bg-black flex items-center justify-center">
     <div class="absolute inset-0">
-        <img src="/placeholder.svg?height=400&width=1920" 
-             alt="Portfolio" 
+        <img src="/placeholder.svg?height=400&width=1920"
+             alt="Portfolio"
              class="w-full h-full object-cover opacity-50">
     </div>
     <div class="relative z-10 text-center text-white">
@@ -35,8 +35,8 @@
         <!-- Search -->
         <div class="max-w-md mx-auto mb-12">
             <form method="GET" class="relative">
-                <input type="text" name="search" value="{{ request('search') }}" 
-                       placeholder="Search portfolio..." 
+                <input type="text" name="search" value="{{ request('search') }}"
+                       placeholder="Search portfolio..."
                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent">
                 <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -50,21 +50,21 @@
                 @foreach($portfolios as $portfolio)
                     <div class="masonry-item group" data-category="{{ $portfolio->category->slug }}">
                         <div class="relative overflow-hidden rounded-lg shadow-lg card-hover bg-white">
-                            <img src="{{ $portfolio->thumbnail_path ? Storage::url($portfolio->thumbnail_path) : '/placeholder.svg?height=400&width=300' }}" 
-                                 alt="{{ $portfolio->title }}" 
+                            <img src="{{ $portfolio->thumbnail_path ? Storage::url($portfolio->thumbnail_path) : '/placeholder.svg?height=400&width=300' }}"
+                                 alt="{{ $portfolio->title }}"
                                  class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110"
                                  data-lightbox="{{ $portfolio->image_path ? Storage::url($portfolio->image_path) : '/placeholder.svg?height=800&width=600' }}">
-                            
+
                             <div class="image-overlay">
                                 <div class="text-center text-white">
                                     <h3 class="text-xl font-semibold mb-2">{{ $portfolio->title }}</h3>
                                     <p class="text-sm opacity-90 mb-4">{{ $portfolio->category->name }}</p>
                                     <div class="flex space-x-2 justify-center">
-                                        <button onclick="openLightbox('{{ $portfolio->image_path ? Storage::url($portfolio->image_path) : '/placeholder.svg?height=800&width=600' }}')" 
+                                        <button onclick="openLightbox('{{ $portfolio->image_path ? Storage::url($portfolio->image_path) : '/placeholder.svg?height=800&width=600' }}')"
                                                 class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-4 py-2 rounded-lg transition-all duration-300">
                                             View
                                         </button>
-                                        <a href="{{ route('portfolio.show', $portfolio) }}" 
+                                        <a href="{{ route('portfolio.show', $portfolio) }}"
                                            class="bg-gold-500 hover:bg-gold-600 text-black px-4 py-2 rounded-lg transition-all duration-300">
                                             Details
                                         </a>
@@ -111,7 +111,7 @@
             Let's create beautiful memories together. Book your photography session today.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('contact') }}" class="btn-primary">
+            <a href="{{ route('contact.index') }}" class="btn-primary">
                 Get In Touch
             </a>
             <a href="{{ route('booking.create') }}" class="btn-secondary">

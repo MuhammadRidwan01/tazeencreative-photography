@@ -218,7 +218,7 @@
                                         </button>
                                     </form>
                                 @endif
-                                <a href="{{ route('contact') }}" class="btn-primary text-center">
+                                <a href="{{ route('contact.index') }}" class="btn-primary text-center">
                                     Contact Support
                                 </a>
                             </div>

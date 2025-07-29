@@ -1,242 +1,200 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - TazeenCreative.id')
-@section('description', 'Kenali lebih dekat TazeenCreative.id, tim fotografer profesional yang berdedikasi mengabadikan momen berharga Anda dengan kualitas terbaik.')
+@section('title', 'About Us - Tazeen Creative Photography')
 
 @section('content')
-<!-- Hero Section -->
-<section class="relative py-24 bg-gradient-to-r from-black to-gray-800">
-    <div class="container-custom text-center text-white">
-        <h1 class="text-5xl md:text-6xl font-serif font-bold mb-6">About Us</h1>
-        <p class="text-xl md:text-2xl max-w-3xl mx-auto">
-            Passion for capturing life's most precious moments with artistic vision and professional excellence
-        </p>
-    </div>
-</section>
-
-<!-- Story Section -->
-<section class="section-padding">
-    <div class="container-custom">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-4xl font-serif font-bold mb-6">Our Story</h2>
-                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                    TazeenCreative.id lahir dari passion mendalam terhadap seni fotografi dan keinginan untuk mengabadikan momen-momen berharga dalam hidup. Dimulai pada tahun 2020, kami telah berkembang menjadi salah satu penyedia layanan fotografi terpercaya di Indonesia.
-                </p>
-                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                    Dengan pengalaman lebih dari 4 tahun di industri fotografi, kami telah melayani ratusan klien dari berbagai kalangan, mulai dari pasangan yang merayakan momen pernikahan, keluarga yang ingin mengabadikan kebersamaan, hingga UMKM yang membutuhkan dokumentasi produk berkualitas.
-                </p>
-                <p class="text-lg text-gray-700 leading-relaxed">
-                    Filosofi kami sederhana: setiap foto memiliki cerita, dan tugas kami adalah memastikan cerita tersebut tersampaikan dengan sempurna melalui lensa kamera kami.
-                </p>
-            </div>
-            <div class="relative">
-                <img src="/placeholder.svg?height=600&width=500" 
-                     alt="Our Story" 
-                     class="w-full rounded-2xl shadow-2xl">
-                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-gold-500 rounded-2xl -z-10"></div>
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-amber-50">
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-r from-slate-900 via-slate-800 to-amber-900 py-24">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                        Capturing Life's
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">
+                            Beautiful Moments
+                        </span>
+                    </h1>
+                    <p class="text-xl text-gray-200 mb-8">
+                        With over 8 years of experience in photography, we specialize in creating timeless memories that tell your unique story.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="/placeholder.svg?height=500&width=500"
+                             alt="Tazeen - Professional Photographer"
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- Mission & Vision -->
-<section class="section-padding bg-gray-50">
-    <div class="container-custom">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="text-center">
-                <div class="w-20 h-20 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-10 h-10 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                    </svg>
+    <!-- Stats Section -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-amber-600 mb-2">{{ $stats['years_experience'] }}+</div>
+                    <div class="text-gray-600">Years Experience</div>
                 </div>
-                <h3 class="text-3xl font-serif font-bold mb-4">Our Vision</h3>
-                <p class="text-gray-700 leading-relaxed">
-                    Menjadi penyedia layanan fotografi terdepan di Indonesia yang dikenal karena kualitas, kreativitas, dan dedikasi dalam mengabadikan setiap momen berharga dengan sempurna.
-                </p>
-            </div>
-            <div class="text-center">
-                <div class="w-20 h-20 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-10 h-10 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                    </svg>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-amber-600 mb-2">{{ $stats['projects_completed'] }}+</div>
+                    <div class="text-gray-600">Projects Completed</div>
                 </div>
-                <h3 class="text-3xl font-serif font-bold mb-4">Our Mission</h3>
-                <p class="text-gray-700 leading-relaxed">
-                    Memberikan layanan fotografi profesional dengan harga terjangkau, mengutamakan kepuasan klien, dan terus berinovasi dalam teknik dan teknologi fotografi untuk hasil yang memukau.
-                </p>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-amber-600 mb-2">{{ $stats['happy_clients'] }}+</div>
+                    <div class="text-gray-600">Happy Clients</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-amber-600 mb-2">{{ $stats['awards_won'] }}+</div>
+                    <div class="text-gray-600">Awards Won</div>
+                </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- Values -->
-<section class="section-padding">
-    <div class="container-custom">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-serif font-bold mb-4">Our Values</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Nilai-nilai yang menjadi fondasi dalam setiap layanan yang kami berikan
+    <!-- Story Section -->
+    <div class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+                    <div class="prose prose-lg text-gray-600 space-y-6">
+                        <p>
+                            Photography has always been more than just a profession for us—it's a passion that drives us to capture the essence of every moment. What started as a hobby with a simple camera has evolved into a full-service photography studio dedicated to creating extraordinary visual experiences.
+                        </p>
+                        <p>
+                            We believe that every photograph should tell a story, evoke emotion, and preserve memories that will be cherished for generations. Our approach combines technical expertise with artistic vision to deliver images that are not just beautiful, but meaningful.
+                        </p>
+                        <p>
+                            From intimate portraits to grand celebrations, we bring the same level of dedication and creativity to every project. Our goal is to make you feel comfortable and confident, allowing your true personality to shine through in every shot.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
+                        <img src="/placeholder.svg?height=600&width=480"
+                             alt="Behind the scenes photography"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-2xl font-bold text-amber-600">Est. 2016</div>
+                        <div class="text-gray-600">Serving clients worldwide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Preview -->
+    @if($services->count() > 0)
+    <div class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">What We Do</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We offer a comprehensive range of photography services to meet all your visual storytelling needs.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                @foreach($services as $service)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="{{ $service->image_url ?? '/placeholder.svg?height=300&width=400&query=' . urlencode($service->name) }}"
+                             alt="{{ $service->name }}"
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ $service->name }}</h3>
+                        <p class="text-gray-600 text-sm mb-4">{{ Str::limit($service->description, 100) }}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-amber-600 font-semibold">${{ number_format($service->base_price) }}+</span>
+                            <a href="{{ route('services.show', $service) }}"
+                               class="text-amber-600 hover:text-amber-700 font-medium text-sm">
+                                Learn More →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <!-- Featured Work -->
+    @if($featuredWork->count() > 0)
+    <div class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Work</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A glimpse into some of our favorite projects that showcase our passion for visual storytelling.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($featuredWork as $work)
+                <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="{{ $work->image_url ?? '/placeholder.svg?height=500&width=400&query=' . urlencode($work->title) }}"
+                             alt="{{ $work->title }}"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 class="text-xl font-semibold mb-2">{{ $work->title }}</h3>
+                        <p class="text-gray-200 text-sm">{{ $work->category->name ?? 'Photography' }}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="{{ route('portfolio.index') }}"
+                   class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-amber-600 to-yellow-600 text-white font-semibold rounded-lg hover:from-amber-700 hover:to-yellow-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                    View Full Portfolio
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <!-- Philosophy Section -->
+    <div class="py-20 bg-gradient-to-r from-slate-900 to-amber-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-8">Our Philosophy</h2>
+            <blockquote class="text-2xl text-gray-200 italic max-w-4xl mx-auto mb-8">
+                "Every moment is unique and deserves to be captured with the same uniqueness. We don't just take photos; we create visual stories that speak to the heart and stand the test of time."
+            </blockquote>
+            <div class="text-amber-400 font-semibold">- Tazeen Creative Team</div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">Ready to Create Something Beautiful?</h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                Let's discuss your vision and bring it to life through the art of photography.
             </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Quality -->
-            <div class="text-center p-8 bg-white rounded-xl shadow-lg card-hover">
-                <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-serif font-bold mb-4">Quality First</h3>
-                <p class="text-gray-700">
-                    Kami tidak pernah berkompromi dengan kualitas. Setiap foto yang kami hasilkan melalui proses editing profesional untuk memastikan hasil terbaik.
-                </p>
-            </div>
-
-            <!-- Creativity -->
-            <div class="text-center p-8 bg-white rounded-xl shadow-lg card-hover">
-                <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-serif font-bold mb-4">Creative Vision</h3>
-                <p class="text-gray-700">
-                    Setiap proyek adalah kanvas baru bagi kreativitas kami. Kami selalu mencari angle dan komposisi unik untuk menghasilkan foto yang berkesan.
-                </p>
-            </div>
-
-            <!-- Trust -->
-            <div class="text-center p-8 bg-white rounded-xl shadow-lg card-hover">
-                <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-serif font-bold mb-4">Trust & Reliability</h3>
-                <p class="text-gray-700">
-                    Kepercayaan klien adalah aset terbesar kami. Kami berkomitmen untuk selalu tepat waktu, profesional, dan dapat diandalkan dalam setiap project.
-                </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="{{ route('contact.index') }}"
+                   class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-600 to-yellow-600 text-white font-semibold rounded-lg hover:from-amber-700 hover:to-yellow-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                    Get In Touch
+                </a>
+                <a href="{{ route('portfolio.index') }}"
+                   class="inline-flex items-center px-8 py-4 border-2 border-amber-600 text-amber-600 font-semibold rounded-lg hover:bg-amber-600 hover:text-white transition-all duration-200">
+                    View Our Work
+                </a>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Team Section -->
-<section class="section-padding bg-gray-50">
-    <div class="container-custom">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-serif font-bold mb-4">Meet Our Team</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Tim profesional yang berpengalaman dan passionate dalam dunia fotografi
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Team Member 1 -->
-            <div class="text-center">
-                <div class="relative mb-6">
-                    <img src="/placeholder.svg?height=300&width=300" 
-                         alt="Tazeen Ahmad" 
-                         class="w-64 h-64 rounded-full mx-auto object-cover shadow-xl">
-                    <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center">
-                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <h3 class="text-2xl font-serif font-bold mb-2">Tazeen Ahmad</h3>
-                <p class="text-gold-600 font-medium mb-4">Lead Photographer & Founder</p>
-                <p class="text-gray-700">
-                    Dengan pengalaman 8+ tahun di industri fotografi, Tazeen memimpin tim dengan visi kreatif dan standar kualitas tinggi.
-                </p>
-            </div>
-
-            <!-- Team Member 2 -->
-            <div class="text-center">
-                <div class="relative mb-6">
-                    <img src="/placeholder.svg?height=300&width=300" 
-                         alt="Sarah Wijaya" 
-                         class="w-64 h-64 rounded-full mx-auto object-cover shadow-xl">
-                    <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center">
-                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <h3 class="text-2xl font-serif font-bold mb-2">Sarah Wijaya</h3>
-                <p class="text-gold-600 font-medium mb-4">Wedding & Portrait Specialist</p>
-                <p class="text-gray-700">
-                    Spesialis dalam fotografi wedding dan portrait dengan sentuhan artistik yang mampu menangkap emosi dalam setiap frame.
-                </p>
-            </div>
-
-            <!-- Team Member 3 -->
-            <div class="text-center">
-                <div class="relative mb-6">
-                    <img src="/placeholder.svg?height=300&width=300" 
-                         alt="Budi Santoso" 
-                         class="w-64 h-64 rounded-full mx-auto object-cover shadow-xl">
-                    <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center">
-                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                    </div>
-                </div>
-                <h3 class="text-2xl font-serif font-bold mb-2">Budi Santoso</h3>
-                <p class="text-gold-600 font-medium mb-4">Product & Commercial Photographer</p>
-                <p class="text-gray-700">
-                    Ahli dalam fotografi produk dan komersial dengan keahlian lighting dan komposisi yang membuat produk terlihat menarik.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Statistics -->
-<section class="section-padding bg-black text-white">
-    <div class="container-custom">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="text-4xl md:text-5xl font-bold text-gold-500 mb-2">500+</div>
-                <p class="text-gray-300">Happy Clients</p>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-bold text-gold-500 mb-2">1000+</div>
-                <p class="text-gray-300">Projects Completed</p>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-bold text-gold-500 mb-2">4+</div>
-                <p class="text-gray-300">Years Experience</p>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-bold text-gold-500 mb-2">50+</div>
-                <p class="text-gray-300">Awards Won</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="section-padding">
-    <div class="container-custom text-center">
-        <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Ready to Work <span class="text-gradient">Together</span>?
-        </h2>
-        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Mari berkolaborasi untuk mengabadikan momen berharga Anda dengan sentuhan profesional dan artistik
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('booking.create') }}" class="btn-primary">
-                Start Your Project
-            </a>
-            <a href="{{ route('contact') }}" class="btn-outline">
-                Get In Touch
-            </a>
-        </div>
-    </div>
-</section>
+</div>
 @endsection

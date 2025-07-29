@@ -6,10 +6,13 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminPortfolioController;
 use App\Http\Controllers\Admin\AdminBookingController;
 use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\AdminChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,10 +27,9 @@ Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio
 Route::get('/portfolio/{portfolio}', [PortfolioController::class, 'show'])->name('portfolio.show');
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
-
-// Contact & About
-Route::view('/contact', 'contact.index')->name('contact');
-Route::view('/about', 'about.index')->name('about');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
@@ -63,15 +65,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Booking Management
     Route::resource('bookings', AdminBookingController::class)->only(['index', 'show', 'update']);
     Route::patch('bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])
-        ->name('bookings.update-status');
+        ->name('bookings.updateStatus');
 
     // Service Management
     Route::resource('services', AdminServiceController::class);
 
     // Chat Management
-    Route::get('chat', [ChatController::class, 'adminIndex'])->name('chat.index');
-    Route::get('chat/{user}', [ChatController::class, 'adminShow'])->name('chat.show');
-    Route::post('chat/{user}', [ChatController::class, 'adminReply'])->name('chat.reply');
+    Route::get('chat', [AdminChatController::class, 'index'])->name('chat.index');
+    Route::get('chat/{user}', [AdminChatController::class, 'show'])->name('chat.show');
+    Route::post('chat/{user}', [AdminChatController::class, 'store'])->name('chat.store');
 });
 
 require __DIR__.'/auth.php';

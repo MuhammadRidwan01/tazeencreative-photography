@@ -15,7 +15,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @stack('styles')
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -29,7 +29,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="text-2xl font-serif font-bold"
-                       :class="scrolled ? 'text-black' : 'text-white'">
+                       :class="scrolled ? 'text-black' : 'text-gray-700'">
                         TazeenCreative<span class="text-gold-500">.id</span>
                     </a>
                 </div>
@@ -38,22 +38,22 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="{{ route('home') }}"
                        class="font-medium transition-colors duration-300 hover:text-gold-500"
-                       :class="scrolled ? 'text-gray-700' : 'text-white'">
+                       :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
                         Home
                     </a>
                     <a href="{{ route('portfolio.index') }}"
                        class="font-medium transition-colors duration-300 hover:text-gold-500"
-                       :class="scrolled ? 'text-gray-700' : 'text-white'">
+                       :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
                         Portfolio
                     </a>
                     <a href="{{ route('services.index') }}"
                        class="font-medium transition-colors duration-300 hover:text-gold-500"
-                       :class="scrolled ? 'text-gray-700' : 'text-white'">
+                       :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
                         Services
                     </a>
-                    <a href="{{ route('contact') }}"
+                    <a href="{{ route('contact.index') }}"
                        class="font-medium transition-colors duration-300 hover:text-gold-500"
-                       :class="scrolled ? 'text-gray-700' : 'text-white'">
+                       :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
                         Contact
                     </a>
 
@@ -61,7 +61,7 @@
                         <div class="relative" x-data="{ open: false }">
                             <button @click="open = !open"
                                     class="flex items-center space-x-2 font-medium transition-colors duration-300 hover:text-gold-500"
-                                    :class="scrolled ? 'text-gray-700' : 'text-white'">
+                                    :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
                                 <span>{{ Auth::user()->name }}</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -103,7 +103,7 @@
                     @else
                         <a href="{{ route('login') }}"
                            class="font-medium transition-colors duration-300 hover:text-gold-500"
-                           :class="scrolled ? 'text-gray-700' : 'text-white'">
+                           :class="scrolled ? 'text-gray-700' : 'text-zinc-600'">
                             Login
                         </a>
                         <a href="{{ route('booking.create') }}" class="btn-secondary">
@@ -137,7 +137,7 @@
                 <a href="{{ route('home') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
                 <a href="{{ route('portfolio.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Portfolio</a>
                 <a href="{{ route('services.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Services</a>
-                <a href="{{ route('contact') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+                <a href="{{ route('contact.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
 
                 @auth
                     @if(Auth::user()->isAdmin())
@@ -218,7 +218,7 @@
                         <li><a href="{{ route('home') }}" class="text-gray-300 hover:text-gold-500 transition-colors duration-300">Home</a></li>
                         <li><a href="{{ route('portfolio.index') }}" class="text-gray-300 hover:text-gold-500 transition-colors duration-300">Portfolio</a></li>
                         <li><a href="{{ route('services.index') }}" class="text-gray-300 hover:text-gold-500 transition-colors duration-300">Services</a></li>
-                        <li><a href="{{ route('contact') }}" class="text-gray-300 hover:text-gold-500 transition-colors duration-300">Contact</a></li>
+                        <li><a href="{{ route('contact.index') }}" class="text-gray-300 hover:text-gold-500 transition-colors duration-300">Contact</a></li>
                     </ul>
                 </div>
 
@@ -264,5 +264,6 @@
             }
         });
     </script>
+    @stack('scripts')
 </body>
 </html>

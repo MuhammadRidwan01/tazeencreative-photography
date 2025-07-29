@@ -94,8 +94,8 @@
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @for($i = 1; $i <= 6; $i++)
                             <div class="aspect-w-4 aspect-h-3 group cursor-pointer">
-                                <img src="/placeholder.svg?height=300&width=400" 
-                                     alt="Sample work {{ $i }}" 
+                                <img src="/placeholder.svg?height=300&width=400"
+                                     alt="Sample work {{ $i }}"
                                      class="w-full h-48 object-cover rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
                                      onclick="openLightbox('/placeholder.svg?height=600&width=800')">
                             </div>
@@ -136,11 +136,11 @@
                             </div>
 
                             <div class="space-y-3">
-                                <a href="{{ route('booking.create', ['service' => $service->slug]) }}" 
+                                <a href="{{ route('booking.create', ['service' => $service->slug]) }}"
                                    class="block w-full text-center btn-primary">
                                     Book This Package
                                 </a>
-                                <a href="{{ route('contact') }}" 
+                                <a href="{{ route('contact.index') }}"
                                    class="block w-full text-center btn-outline">
                                     Ask Questions
                                 </a>

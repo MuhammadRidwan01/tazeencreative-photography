@@ -180,7 +180,7 @@
                 </div>
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Contact Form</h3>
                 <p class="text-gray-600 mb-3">Fill out our detailed contact form</p>
-                <a href="{{ route('contact') }}" class="text-purple-600 hover:text-purple-800 font-medium">
+                <a href="{{ route('contact.index') }}" class="text-purple-600 hover:text-purple-800 font-medium">
                     Contact Form
                 </a>
             </div>

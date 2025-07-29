@@ -40,11 +40,11 @@
             <!-- Main Image -->
             <div class="lg:col-span-2">
                 <div class="relative group">
-                    <img src="{{ $portfolio->image_path ? Storage::url($portfolio->image_path) : '/placeholder.svg?height=600&width=800' }}" 
-                         alt="{{ $portfolio->title }}" 
+                    <img src="{{ $portfolio->image_path ? Storage::url($portfolio->image_path) : '/placeholder.svg?height=600&width=800' }}"
+                         alt="{{ $portfolio->title }}"
                          class="w-full h-auto rounded-lg shadow-xl cursor-pointer transition-transform duration-300 group-hover:scale-105"
                          onclick="openLightbox('{{ $portfolio->image_path ? Storage::url($portfolio->image_path) : '/placeholder.svg?height=600&width=800' }}')">
-                    
+
                     @if($portfolio->is_featured)
                         <div class="absolute top-4 left-4">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gold-500 text-black">
@@ -93,7 +93,7 @@
                     <a href="{{ route('booking.create') }}" class="block w-full btn-primary text-center">
                         Book Similar Session
                     </a>
-                    <a href="{{ route('contact') }}" class="block w-full btn-outline text-center">
+                    <a href="{{ route('contact.index') }}" class="block w-full btn-outline text-center">
                         Get More Info
                     </a>
                 </div>
@@ -129,18 +129,18 @@
     <section class="section-padding bg-gray-50">
         <div class="container-custom">
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12">More from {{ $portfolio->category->name }}</h2>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach($relatedPortfolios as $related)
                     <div class="group relative overflow-hidden rounded-lg shadow-lg card-hover">
-                        <img src="{{ $related->thumbnail_path ? Storage::url($related->thumbnail_path) : '/placeholder.svg?height=300&width=400' }}" 
-                             alt="{{ $related->title }}" 
+                        <img src="{{ $related->thumbnail_path ? Storage::url($related->thumbnail_path) : '/placeholder.svg?height=300&width=400' }}"
+                             alt="{{ $related->title }}"
                              class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
-                        
+
                         <div class="image-overlay">
                             <div class="text-center text-white">
                                 <h3 class="text-lg font-semibold mb-2">{{ $related->title }}</h3>
-                                <a href="{{ route('portfolio.show', $related) }}" 
+                                <a href="{{ route('portfolio.show', $related) }}"
                                    class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-4 py-2 rounded-lg transition-all duration-300">
                                     View Details
                                 </a>

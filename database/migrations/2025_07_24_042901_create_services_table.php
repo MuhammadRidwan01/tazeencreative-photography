@@ -13,11 +13,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description');
-            $table->decimal('price_start', 12, 0);
-            $table->decimal('price_end', 12, 0)->nullable();
+            $table->string('image_url')->nullable();
+            $table->decimal('price_start', 12, 2);
+            $table->decimal('price_end', 12, 2)->nullable();
             $table->integer('duration_hours');
-            $table->json('features'); // Array of features
-            $table->string('package_type'); // basic, premium, platinum
+            $table->json('features');
+            $table->enum('package_type', ['basic', 'premium', 'luxury']);
             $table->boolean('is_popular')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();

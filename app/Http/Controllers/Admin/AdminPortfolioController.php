@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Portfolio;
 use App\Models\Category;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Laravel\Facades\Image; // Import yang benar untuk Laravel 12
 
 class AdminPortfolioController extends Controller
 {
@@ -47,7 +47,7 @@ class AdminPortfolioController extends Controller
 
             // Create thumbnail
             $thumbnailPath = 'portfolios/thumbs/' . $filename;
-            $thumbnail = Image::make($image)->fit(400, 300);
+            $thumbnail = Image::read($image)->resize(400, 300); // Syntax untuk Laravel 12/Intervention Image v3
             Storage::disk('public')->put($thumbnailPath, $thumbnail->encode());
 
             $validated['image_path'] = $imagePath;
@@ -100,7 +100,7 @@ class AdminPortfolioController extends Controller
 
             // Create thumbnail
             $thumbnailPath = 'portfolios/thumbs/' . $filename;
-            $thumbnail = Image::make($image)->fit(400, 300);
+            $thumbnail = Image::read($image)->resize(400, 300); // Syntax untuk Laravel 12/Intervention Image v3
             Storage::disk('public')->put($thumbnailPath, $thumbnail->encode());
 
             $validated['image_path'] = $imagePath;

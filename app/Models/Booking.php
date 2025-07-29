@@ -27,7 +27,7 @@ class Booking extends Model
     ];
 
     protected $casts = [
-        'booking_date' => 'date',
+        'booking_date' => 'datetime',
         'booking_time' => 'datetime:H:i',
         'budget_min' => 'decimal:0',
         'budget_max' => 'decimal:0'

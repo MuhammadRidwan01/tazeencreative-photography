@@ -8,12 +8,12 @@
 <section class="relative h-screen flex items-center justify-center overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <img src="/placeholder.svg?height=1080&width=1920" 
-             alt="Professional Photography" 
+        <img src="/placeholder.svg?height=1080&width=1920"
+             alt="Professional Photography"
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     </div>
-    
+
     <!-- Hero Content -->
     <div class="relative z-10 text-center text-white container-custom" data-animate="fade-in">
         <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
@@ -21,7 +21,7 @@
             <span class="text-gradient">Perfect Moments</span>
         </h1>
         <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
-            Professional photography services for weddings, portraits, products, and events. 
+            Professional photography services for weddings, portraits, products, and events.
             Creating timeless memories with artistic excellence.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -33,7 +33,7 @@
             </a>
         </div>
     </div>
-    
+
     <!-- Scroll Indicator -->
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,17 +51,17 @@
                 Discover our latest photography projects showcasing the beauty and emotion of life's most precious moments.
             </p>
         </div>
-        
+
         @if($featuredPortfolios->count() > 0)
             <div class="masonry" data-animate="fade-in">
                 @foreach($featuredPortfolios as $portfolio)
                     <div class="masonry-item group">
                         <div class="relative overflow-hidden rounded-lg shadow-lg card-hover">
-                            <img src="{{ $portfolio->thumbnail_path ? Storage::url($portfolio->thumbnail_path) : '/placeholder.svg?height=400&width=300' }}" 
-                                 alt="{{ $portfolio->title }}" 
+                            <img src="{{ $portfolio->thumbnail_path ? Storage::url($portfolio->thumbnail_path) : '/placeholder.svg?height=400&width=300' }}"
+                                 alt="{{ $portfolio->title }}"
                                  class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110"
                                  data-lightbox="{{ $portfolio->image_path ? Storage::url($portfolio->image_path) : '/placeholder.svg?height=800&width=600' }}">
-                            
+
                             <div class="image-overlay">
                                 <div class="text-center text-white">
                                     <h3 class="text-xl font-semibold mb-2">{{ $portfolio->title }}</h3>
@@ -77,7 +77,7 @@
                     </div>
                 @endforeach
             </div>
-            
+
             <div class="text-center mt-12">
                 <a href="{{ route('portfolio.index') }}" class="btn-outline">
                     View All Portfolio
@@ -100,7 +100,7 @@
                 Professional photography packages tailored to meet your specific needs and budget.
             </p>
         </div>
-        
+
         @if($services->count() > 0)
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach($services as $service)
@@ -114,13 +114,13 @@
                                     </span>
                                 @endif
                             </div>
-                            
+
                             <div class="mb-6">
                                 <span class="text-3xl font-bold text-gold-500">{{ $service->formatted_price }}</span>
                             </div>
-                            
+
                             <p class="text-gray-600 mb-6">{{ Str::limit($service->description, 100) }}</p>
-                            
+
                             <ul class="space-y-2 mb-8">
                                 @foreach(array_slice($service->features, 0, 4) as $feature)
                                     <li class="flex items-center text-sm text-gray-600">
@@ -131,7 +131,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            
+
                             <div class="space-y-3">
                                 <a href="{{ route('services.show', $service) }}" class="block w-full text-center btn-outline">
                                     View Details
@@ -161,20 +161,20 @@
                 Explore our diverse range of photography specializations, each crafted with passion and expertise.
             </p>
         </div>
-        
+
         @if($categories->count() > 0)
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach($categories as $category)
-                    <a href="{{ route('portfolio.index', ['category' => $category->slug]) }}" 
+                    <a href="{{ route('portfolio.index', ['category' => $category->slug]) }}"
                        class="group relative overflow-hidden rounded-lg shadow-lg card-hover" data-animate="zoom-in">
                         <div class="aspect-w-4 aspect-h-5">
-                            <img src="{{ $category->image_path ? Storage::url($category->image_path) : '/placeholder.svg?height=400&width=320&query=' . urlencode($category->name . ' photography') }}" 
-                                 alt="{{ $category->name }}" 
+                            <img src="{{ $category->image_path ? Storage::url($category->image_path) : '/placeholder.svg?height=400&width=320&query=' . urlencode($category->name . ' photography') }}"
+                                 alt="{{ $category->name }}"
                                  class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
                         </div>
-                        
+
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        
+
                         <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                             <h3 class="text-xl font-serif font-bold mb-2">{{ $category->name }}</h3>
                             <p class="text-sm opacity-90 mb-2">{{ $category->portfolios_count }} Photos</p>
@@ -205,7 +205,7 @@
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                     Our passion lies in creating timeless images that tell your unique story, whether it's your wedding day, a family portrait, or a corporate event.
                 </p>
-                
+
                 <div class="grid grid-cols-2 gap-6 mb-8">
                     <div class="text-center">
                         <div class="text-3xl font-bold text-gold-500 mb-2">500+</div>
@@ -224,23 +224,23 @@
                         <div class="text-sm text-gray-600">Events Covered</div>
                     </div>
                 </div>
-                
-                <a href="{{ route('about') }}" class="btn-primary">
+
+                <a href="{{ route('about.index') }}" class="btn-primary">
                     Learn More About Us
                 </a>
             </div>
-            
+
             <div class="relative" data-animate="fade-in">
-                <img src="/placeholder.svg?height=600&width=500" 
-                     alt="Professional Photographer" 
+                <img src="/placeholder.svg?height=600&width=500"
+                     alt="Professional Photographer"
                      class="w-full h-auto rounded-lg shadow-xl">
-                
+
                 <!-- Floating Elements -->
                 <div class="absolute -top-4 -right-4 bg-gold-500 text-black p-4 rounded-lg shadow-lg">
                     <div class="text-2xl font-bold">5★</div>
                     <div class="text-xs">Rating</div>
                 </div>
-                
+
                 <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
                     <div class="text-2xl font-bold text-gold-500">ISO</div>
                     <div class="text-xs text-gray-600">Certified</div>
@@ -259,7 +259,7 @@
                 Don't just take our word for it. Here's what our satisfied clients have to say about our work.
             </p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white p-8 rounded-lg shadow-lg" data-animate="slide-up">
                 <div class="flex items-center mb-4">
@@ -280,7 +280,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="bg-white p-8 rounded-lg shadow-lg" data-animate="slide-up">
                 <div class="flex items-center mb-4">
                     @for($i = 0; $i < 5; $i++)
@@ -300,7 +300,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="bg-white p-8 rounded-lg shadow-lg" data-animate="slide-up">
                 <div class="flex items-center mb-4">
                     @for($i = 0; $i < 5; $i++)
@@ -332,7 +332,7 @@
             Let's create beautiful memories together. Contact us today to discuss your photography needs and book your session.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('contact') }}" class="btn-secondary">
+            <a href="{{ route('contact.index') }}" class="btn-secondary">
                 Get In Touch
             </a>
             <a href="{{ route('booking.create') }}" class="btn-outline border-white text-white hover:bg-white hover:text-black">

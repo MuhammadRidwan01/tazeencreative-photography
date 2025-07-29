@@ -27,5 +27,13 @@ class AdminUserSeeder extends Seeder
             'phone' => '081234567891',
             'email_verified_at' => now()
         ]);
+        User::create([
+            'name' => 'keisa cantik',
+            'email' => 'keisha@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'client',
+            'phone' => '081234567891',
+            'email_verified_at' => now()
+        ]);
     }
 }

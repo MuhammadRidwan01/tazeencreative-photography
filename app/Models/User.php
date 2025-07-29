@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,9 +17,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
         'phone',
-        'last_seen'
+        'address',
+        'role',
     ];
 
     protected $hidden = [
@@ -29,7 +30,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'last_seen' => 'datetime'
     ];
 
     public function bookings(): HasMany
@@ -37,18 +37,34 @@ class User extends Authenticatable
         return $this->hasMany(Booking::class);
     }
 
-    public function chatMessages(): HasMany
+    public function sentMessages(): HasMany
     {
-        return $this->hasMany(ChatMessage::class);
+        return $this->hasMany(ChatMessage::class, 'sender_id');
     }
 
-    public function isAdmin(): bool
+    public function receivedMessages(): HasMany
+    {
+        return $this->hasMany(ChatMessage::class, 'receiver_id');
+    }
+
+    public function conversationWith($user)
+    {
+        return ChatMessage::where(function($query) use ($user) {
+            $query->where('sender_id', $this->id)
+                  ->where('receiver_id', $user->id);
+        })->orWhere(function($query) use ($user) {
+            $query->where('sender_id', $user->id)
+                  ->where('receiver_id', $this->id);
+        })->orderBy('created_at', 'asc');
+    }
+
+    public function isAdmin()
     {
         return $this->role === 'admin';
     }
 
-    public function isOnline(): bool
+    public function isClient()
     {
-        return $this->last_seen && $this->last_seen->diffInMinutes(now()) < 5;
+        return $this->role === 'client';
     }
 }
