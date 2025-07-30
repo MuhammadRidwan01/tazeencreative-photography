@@ -8,7 +8,7 @@
 <section class="relative h-screen flex items-center justify-center overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <img src="/placeholder.svg?height=1080&width=1920"
+        <img src="/foto/foto.jpg"
              alt="Professional Photography"
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>

@@ -29,7 +29,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="text-2xl font-serif font-bold"
-                       :class="scrolled ? 'text-black' : 'text-gray-700'">
+                       :class="scrolled ? 'text-black' : 'text-white'">
                         TazeenCreative<span class="text-gold-500">.id</span>
                     </a>
                 </div>
@@ -38,22 +38,22 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="{{ route('home') }}"
                        class="font-medium transition-colors duration-300 hover:text-gold-500"
-                       :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
+                       :class="scrolled ? 'text-gray-700' : 'text-white'">
                         Home
                     </a>
                     <a href="{{ route('portfolio.index') }}"
                        class="font-medium transition-colors duration-300 hover:text-gold-500"
-                       :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
+                       :class="scrolled ? 'text-gray-700' : 'text-white'">
                         Portfolio
                     </a>
                     <a href="{{ route('services.index') }}"
                        class="font-medium transition-colors duration-300 hover:text-gold-500"
-                       :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
+                       :class="scrolled ? 'text-gray-700' : 'text-white'">
                         Services
                     </a>
                     <a href="{{ route('contact.index') }}"
                        class="font-medium transition-colors duration-300 hover:text-gold-500"
-                       :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
+                       :class="scrolled ? 'text-gray-700' : 'text-white'">
                         Contact
                     </a>
 
@@ -61,7 +61,7 @@
                         <div class="relative" x-data="{ open: false }">
                             <button @click="open = !open"
                                     class="flex items-center space-x-2 font-medium transition-colors duration-300 hover:text-gold-500"
-                                    :class="scrolled ? 'text-gray-700' : 'text-gray-600'">
+                                    :class="scrolled ? 'text-gray-700' : 'text-white'">
                                 <span>{{ Auth::user()->name }}</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -103,7 +103,7 @@
                     @else
                         <a href="{{ route('login') }}"
                            class="font-medium transition-colors duration-300 hover:text-gold-500"
-                           :class="scrolled ? 'text-gray-700' : 'text-zinc-600'">
+                           :class="scrolled ? 'text-gray-700' : 'text-white'">
                             Login
                         </a>
                         <a href="{{ route('booking.create') }}" class="btn-secondary">
